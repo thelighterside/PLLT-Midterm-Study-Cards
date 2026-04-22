@@ -25,8 +25,6 @@
             text-align: center;
             position: relative;
         }
-        
-        /* Updated Counter Styling */
         #counter-container {
             position: absolute;
             top: 1.5rem;
@@ -55,13 +53,11 @@
             border-color: #007bff;
             background-color: #fff;
         }
-        /* Hide the default up/down arrows on number inputs */
         #card-jumper::-webkit-inner-spin-button, 
         #card-jumper::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
             margin: 0; 
         }
-
         h1 {
             font-size: 1.5rem;
             color: #333;
@@ -114,7 +110,6 @@
         }
         button:hover { background-color: #0056b3; }
 
-        /* Review List Styling */
         .list-container {
             margin-top: 2rem;
             display: none;
@@ -358,4 +353,458 @@
         { term: "Parallel distributed processing / PDP model", definition: "A model based on the notion that information is processed simultaneously at several levels of attention, rather than serially. (Page 28)" },
         { term: "Neural interconnections", definition: "Simultaneous connections in the brain that allow a sentence to be processed across many segments and levels all at once. (Page 29)" },
         { term: "Connectionism", definition: "A branch of psycholinguistic inquiry in which neurons in the brain are said to form multiple connections, and experience leads to learning by strengthening particular connections. (Page 29)" },
-        { term: "Emergentism", definition: "A perspective
+        { term: "Emergentism", definition: "A perspective making the claim that the complexity of language emerges from a relatively simple developmental process being exposed to a massive and complex environment. (Page 30)" },
+        { term: "Constructivist perspectives", definition: "A shift in patterns of research moving more deeply into the essence of language, emphasizing the deeper functional levels of meaning constructed from social interaction. (Page 30)" },
+        { term: "Functional approaches", definition: "Approaches recognizing language as just one manifestation of the cognitive and affective ability to deal with the world, others, and self. (Page 30)" },
+        { term: "Forms of language", definition: "The morphemes, words, sentences, and the rules that govern them. (Page 31)" },
+        { term: "Functions of language", definition: "The meaningful, interactive purposes within a social context that we accomplish with the forms of language. (Page 31)" },
+        { term: "Underlying relations", definition: "The underlying structures children learn, rather than just superficial word order, such as agent-action or possessor-possessed. (Page 31)" },
+        { term: "Agent-action relation", definition: "An underlying relationship where an agent performs an action, such as \"Mommy is putting the sock on\". (Page 31)" },
+        { term: "Agent-object relation", definition: "An underlying relationship where an agent interacts with an object, such as \"Mommy sees the sock\". (Page 31)" },
+        { term: "Possessor-possessed relation", definition: "An underlying relationship denoting ownership, such as \"Mommy's sock\". (Page 31)" },
+        { term: "Jean Piaget", definition: "A researcher who described overall cognitive development as the result of children's interaction with their environment, which determines what they learn about language. (Page 31)" },
+        { term: "Conceptual interpretive abilities", definition: "Abilities that children appear to be equipped with for categorizing the world when they approach language learning. (Page 31)" },
+        { term: "Semantic complexity", definition: "The complexity of meaning that Dan Slobin demonstrated determines sequences of semantic learning more than structural complexity does. (Page 32)" },
+        { term: "Interactive, communicative functions", definition: "The very heart of language being tackled in its variability, including conversational cues and the interaction between hearer and speaker. (Page 32)" },
+        { term: "Performance level of language", definition: "The overt responses that include minutiae of day-to-day performance like hesitations, pauses, and backtracking. (Page 32)" },
+        { term: "Competence", definition: "One's underlying knowledge of a system, event, or fact; the nonobservable ability to do something. (Page 34)" },
+        { term: "Performance", definition: "The overtly observable and concrete manifestation, or realization, of competence, such as the actual doing of speaking or listening. (Page 34)" },
+        { term: "Idealized speaker-hearer", definition: "Chomsky's concept of an individual whose competence does not display performance variables like memory limitations, distractions, or hesitations. (Page 34)" },
+        { term: "Performance variables", definition: "Glitches in production such as memory limitations, distractions, shifts of attention, errors, and hesitation phenomena like false starts. (Page 34)" },
+        { term: "Pop-go-weasel effect", definition: "A phenomenon where children exhibit no cognizance of an adult's grammatical interrogation, saying whatever they want instead. (Page 34)" },
+        { term: "Heterogeneous competence", definition: "Abilities that are in the process of being formed, to which slips, hesitations, and self-corrections are potentially connected. (Page 37)" },
+        { term: "Comprehension", definition: "Understanding language (listening, reading), which must not be equated purely with competence. (Page 37)" },
+        { term: "Production", definition: "Producing language (speaking, writing), which must not be thought of only as performance. (Page 37)" },
+        { term: "Production competence", definition: "The separation of underlying abilities specific to production within a theory of language. (Page 38)" },
+        { term: "Comprehension competence", definition: "The separation of underlying abilities specific to comprehension within a theory of language. (Page 38)" },
+        { term: "Comprehension approach", definition: "An approach to language teaching advocating a focus on understanding before producing language, based on the superiority of comprehension over production in early stages. (Page 38)" },
+        { term: "Innateness hypothesis", definition: "The theory positing that children are born with an innate knowledge of or predisposition toward language, which is universal in all human beings. (Page 38)" },
+        { term: "FOXP2 gene", definition: "A specific gene associated with language, representing the scientific search for genetic evidence of an innate acquisition device. (Page 38)" },
+        { term: "Nature-nurture controversy", definition: "The debate probing what behaviors nature provides innately in a predetermined biological timetable, versus what behaviors are internalized by nurture or environmental exposure. (Page 39)" },
+        { term: "Bio-programmed", definition: "Derek Bickerton's proposition that human beings are innately programmed to proceed from stage to stage, releasing properties of language at predetermined developmental ages. (Page 39)" },
+        { term: "Universals", definition: "Common patterns of linguistic and cognitive development across many different languages, such as word order, negation, and question formation. (Page 39)" },
+        { term: "Principles", definition: "Invariable characteristics of human language that appear to apply to all languages universally. (Page 40)" },
+        { term: "Parameters", definition: "Rules with a limited number of built-in options, settings, or values that allow for cross-linguistic variation. (Page 40)" },
+        { term: "Head parameter constraints", definition: "Constraints determining whether a language places a phrase head first (like English) or head last (like Japanese). (Page 40)" },
+        { term: "Initial state", definition: "The starting point of a child's language learning, said to consist of a set of universal principles which specify some limited possibilities of variation. (Page 40)" },
+        { term: "Principle of structure dependency", definition: "The principle stating that language is organized in such a way that it crucially depends on the structural relationships between elements in a sentence. (Page 40)" },
+        { term: "Principle of word order permutation", definition: "A principle allowing one to perceive the structural difference between declarative sentences and questions based on variations in word order. (Page 41)" },
+        { term: "Systematicity", definition: "Children's remarkable ability to infer the phonological, structural, lexical, and semantic systems of language consistently as they acquire it. (Page 41)" },
+        { term: "Variability", definition: "An equally remarkable amount of variation in the process of learning, making it difficult to uniformly define the exact stages of language acquisition. (Page 41)" },
+        { term: "Language and Thought", definition: "The domain of inquiry probing the relationship between cognitive development and language, and how researchers can best account for the interaction of the two. (Page 41)" },
+        { term: "Lev Vygotsky", definition: "A researcher who claimed that social interaction, through language, is a prerequisite to cognitive development. (Page 42)" },
+        { term: "Jerome Bruner", definition: "A researcher who singled out sources of language-influenced intellectual development, such as words shaping concepts and dialogues serving to orient and educate. (Page 42)" },
+        { term: "Zone of proximal development / ZPD", definition: "Vygotsky's concept that every child reaches their potential development in part through social interaction with adults and peers. (Page 42)" },
+        { term: "Linguistic relativity / Whorfian hypothesis", definition: "Benjamin Whorf's proposition that each language imposes on its speaker a particular worldview. (Page 42)" },
+        { term: "Imitation", definition: "A strategy a child uses in the acquisition of language, which is consonant with behavioral principles of early language learning. (Page 42)" },
+        { term: "Echoing", definition: "A particularly salient imitation strategy in early language learning and an important aspect of early phonological acquisition. (Page 43)" },
+        { term: "Surface-structure imitation", definition: "Imitation where a person repeats or mimics surface strings, attending to a phonological code rather than a semantic code. (Page 43)" },
+        { term: "Rote pattern drills", definition: "Classroom exercises that often evoke surface imitation, a repetition of sounds without the slightest understanding of what the sounds might mean. (Page 43)" },
+        { term: "Deep-structure imitation", definition: "Imitation where children attend to a meaningful, deeper level of language, which can literally block their attention to surface structure. (Page 43)" },
+        { term: "Truth value of the utterance", definition: "The actual communicative meaning or factual reality of a statement, to which children attend rather than the correctness of certain forms. (Page 44)" },
+        { term: "Practice", definition: "Repetition and association of language, which a behavioral model claims is the key to the formation of habits by operant conditioning. (Page 44)" },
+        { term: "Frequency of occurrence", definition: "The number of times a linguistic item appears in the speech of mothers, which was found to be an overwhelmingly strong predictor of its emergence in children's speech. (Page 45)" },
+        { term: "Meaningful occurrence", definition: "A refinement of frequency suggesting that the frequency of stimuli matters most when tied to meaningful communicative contexts. (Page 45)" },
+        { term: "Audiolingual Method", definition: "A language teaching method influenced by a behavioral conditioning paradigm that placed almost exclusive value on frequency of input and output. (Page 45)" },
+        { term: "Input", definition: "The sort of linguistic exposure children receive, which is undeniably crucial in shaping the child's acquisition of language. (Page 45)" },
+        { term: "Conversational or discourse analysis", definition: "A subfield focusing on how children learn to take part in conversation, initiate exchanges, and recognize intended meanings within social interaction. (Page 46)" },
+        { term: "Transactions and exchanges", definition: "The interactive back-and-forth components of how children learn to take part in conversation, beyond just utilizing sentences and clauses. (Page 46)" },
+        { term: "Literal meaning", definition: "The direct, surface interpretation of an utterance, as opposed to its intended functional purpose. (Page 47)" },
+        { term: "Intended meaning / Functional meaning", definition: "The intended functional purpose of an utterance detected within conversational rules, such as recognizing a question as a request for action or help. (Page 47)" },
+        { term: "Naturalistic approaches", definition: "Early methods that attempted to replicate the child's L1 journey by teaching learners directly and conceptually without grammatical rules and explanations. (Page 48)" },
+        { term: "François Gouin", definition: "An educator who devised the Series Method after observing the successful language acquisition of his young nephew compared to his own painful failures. (Page 47)" },
+        { term: "Series Method", definition: "A teaching method devised by François Gouin that taught learners directly and conceptually a series of connected sentences easily understood, acted out, and related to reality. (Page 48)" },
+        { term: "Maximilian Berlitz", definition: "A visionary language pedagogue who helped establish the credibility of naturalistic approaches in what became known as the Direct Method. (Page 47)" },
+        { term: "Direct Method", definition: "Berlitz's method positing that L2 learning should involve lots of active oral interaction, spontaneous use, no translation, and little or no grammatical analysis. (Page 48)" },
+        { term: "Ultimate attainment", definition: "The final level of proficiency achieved in second language acquisition. (Page 51)" },
+        { term: "First language (L1)", definition: "The language that children acquire easily and well, starting in very early childhood. (Page 51)" },
+        { term: "Second language (L2)", definition: "A language that adults learn, particularly in an educational setting, where they can meet with great difficulty and sometimes failure. (Page 51)" },
+        { term: "Natural order", definition: "The sequence in which children practice separate sounds, then words, then sentences, which is often mistakenly believed to be the way foreign languages should be taught. (Page 52)" },
+        { term: "Grammatical conceptualization", definition: "Formal instruction in grammar, often incorrectly thought unnecessary in teaching a foreign language because a small child simply uses language without it. (Page 52)" },
+        { term: "Cognitive and constructivist research", definition: "The types of research on both L1 and L2 acquisition that gathered momentum and recognized mistakes in drawing direct global analogies between the two. (Page 53)" },
+        { term: "Pathological instances", definition: "Rare recorded cases of an adult acquiring a first language, such as accounts of severe disability or isolation. (Page 53)" },
+        { term: "Genie", definition: "A thirteen-year-old girl who had been socially isolated and abused all her life until she was discovered by the authorities, and who was then faced with the task of acquiring a first language. (Page 53)" },
+        { term: "Wolf children", definition: "Accounts of severely isolated or disabled individuals that fall into the category of pathological instances of first language acquisition in adulthood. (Page 53)" },
+        { term: "Critical period", definition: "A biologically determined period of life when language can be acquired more easily and beyond which time language is increasingly difficult to acquire. (Page 54)" },
+        { term: "Sensitive period", definition: "Another term used to refer to the critical period for language acquisition. (Page 54)" },
+        { term: "Critical Period Hypothesis (CPH)", definition: "The claim that there is a biological timetable for language acquisition. (Page 54)" },
+        { term: "Biologically determined predispositions", definition: "Innate language learning abilities timed for release, which would wane if the correct environmental stimuli were not present at the crucial stage. (Page 54)" },
+        { term: "Neurological development", definition: "The maturation of the brain that researchers study to see how it might affect second language success and whether it spells the doom of language acquisition ability at some stage. (Page 55)" },
+        { term: "Hemispheric lateralization", definition: "The process where, as the human brain matures, certain functions are assigned to the left hemisphere of the brain, and certain other functions to the right hemisphere. (Page 55)" },
+        { term: "Left hemisphere", definition: "The part of the brain where intellectual, logical, and analytic functions appear to be largely located, and where language functions are primarily controlled. (Page 55)" },
+        { term: "Right hemisphere", definition: "The part of the brain that controls functions related to emotional and social needs. (Page 55)" },
+        { term: "Hemispherectomies", definition: "The surgical removal of one hemisphere of the brain; patients who have had left hemispherectomies have been capable of comprehending and producing some language. (Page 55)" },
+        { term: "Relocalize", definition: "The ability of children up to the age of puberty who suffer injury to the left hemisphere to transfer linguistic functions to the right hemisphere to relearn their first language. (Page 55)" },
+        { term: "Plasticity of the brain", definition: "The flexibility of the brain prior to puberty that enables children to acquire not only their first language but also a second language. (Page 55)" },
+        { term: "Right hemisphere participation", definition: "Activity that is particularly active during the early stages of learning the second language, involving strategies like guessing at meanings. (Page 56)" },
+        { term: "Formulaic utterances", definition: "Fixed expressions used as a strategy in early L2 learning, representing right hemisphere activity. (Page 56)" },
+        { term: "Pragmatic aspects", definition: "Elements of language use whose processing crucially involves the right hemisphere. (Page 56)" },
+        { term: "Biological timetables", definition: "Genetically scheduled periods for development, such as those exhibited by white-crowned sparrows and other birds for the acquisition of their unique birdsong. (Page 56)" },
+        { term: "Sociobiological critical period", definition: "A period in various species of mammals and birds where the development of a socially bonding accent at puberty enables species to form an identity with their own community and attract mates. (Page 57)" },
+        { term: "Lower-order processes", definition: "Functions such as pronunciation that are dependent on early-maturing brain functions, making foreign accents difficult to overcome after childhood. (Page 57)" },
+        { term: "Higher-order language functions", definition: "Functions such as semantic relations that are more dependent on late-maturing neural circuits, which may explain the efficiency of adult learning. (Page 57)" },
+        { term: "Authentic accent", definition: "A nativelike pronunciation that some adults have been known to acquire in a second language after the age of puberty, though such individuals are exceptional. (Page 57)" },
+        { term: "Tukano culture", definition: "A culture in South America where at least two dozen languages were spoken and people almost suddenly began to speak two or three other languages during adolescence with no foreign accent. (Page 57)" },
+        { term: "Exogamous unit", definition: "A tribal group where people must marry outside their group, leading them to almost always marry someone who speaks another language. (Page 57)" },
+        { term: "Ultimate attainment of proficiency", definition: "The final level of competence in an L2, affected by a multitude of cognitive, motivational, affective, social, psychological, and strategic variables. (Page 58)" },
+        { term: "Communicative language ability", definition: "The overall capacity to communicate, where the importance of accent in assessing it has been argued about by linguists for decades. (Page 58)" },
+        { term: "Articulation of human speech", definition: "The process requiring a tremendous degree of muscular control over several hundred muscles in the throat, larynx, mouth, lips, and tongue to achieve the fluency of a native speaker. (Page 58)" },
+        { term: "Neuromuscular plasticity", definition: "A possible physical cause of an age-based critical period for acquiring authentic, nativelike control of the phonology of a foreign language. (Page 58)" },
+        { term: "Statistical probability", definition: "In these terms, virtually all the research shows that the chances of a person beginning a second language after puberty and achieving a scientifically verifiable authentic native accent are slim. (Page 58)" },
+        { term: "Communicative and functional purpose", definition: "The true goal of language acquisition, which is far more important than a perfect native accent. (Page 59)" },
+        { term: "World Englishes", definition: "The concept in which many so-called native speakers of English are perceived as having foreign accents, showing the inability to define native accent at all. (Page 59)" },
+        { term: "Native-speaker ideal", definition: "A standard from linguistic research in the 1960s that is both harder to find and less relevant as time moves on. (Page 59)" },
+        { term: "Rate of learning", definition: "The speed at which acquisition occurs; studies found younger children did not have a particular advantage in this over older children. (Page 59)" },
+        { term: "Multi-competence", definition: "A positive focus on the varied abilities of second language learners, proposed as an alternative to using native accent as the yardstick and holding up monolingualism as the standard. (Page 60)" },
+        { term: "Human cognition", definition: "The intellectual capability that develops rapidly throughout the first sixteen years of life and less rapidly thereafter. (Page 60)" },
+        { term: "Sensorimotor stage", definition: "Piaget's outlined stage of intellectual development from birth to two years of age. (Page 60)" },
+        { term: "Preoperational stage", definition: "Piaget's outlined stage of intellectual development from ages two to seven. (Page 60)" },
+        { term: "Operational stage", definition: "Piaget's outlined stage of intellectual development from ages seven to sixteen. (Page 60)" },
+        { term: "Concrete operational stage", definition: "Piaget's outlined sub-stage of intellectual development from ages seven to eleven. (Page 60)" },
+        { term: "Formal operational stage", definition: "Piaget's outlined sub-stage of intellectual development from ages eleven to sixteen. (Page 60)" },
+        { term: "Abstraction", definition: "The capability a person develops at puberty to engage in formal thinking which transcends concrete experience and direct perception. (Page 61)" },
+        { term: "Deductive thinking", definition: "A cognitive process that Ausubel hinted might be a benefit adults have in performing. (Page 61)" },
+        { term: "Egocentric (cognitive)", definition: "A state in initial language acquisition where the child is able to focus on only one dimension at a time. (Page 61)" },
+        { term: "Decentration", definition: "The ability to focus on multiple dimensions; a lack of this may well be a necessity for language acquisition. (Page 61)" },
+        { term: "Implicit learning", definition: "The incidental acquisition of linguistic patterns, a mechanism in which children might excel. (Page 61)" },
+        { term: "Explicit learning", definition: "Focused attention or instruction; a mechanism used by adults with high general verbal ability to bypass increasingly inefficient implicit mechanisms. (Page 61)" },
+        { term: "Equilibration", definition: "Progressive interior organization of knowledge in a stepwise fashion. (Page 62)" },
+        { term: "Disequilibrium", definition: "States of doubt and uncertainty in cognitive development that may provide significant motivation for language acquisition. (Page 62)" },
+        { term: "Equilibrium", definition: "Stages of resolution and certainty in cognitive development that mark virtually all cognitive development up through age fourteen or fifteen. (Page 62)" },
+        { term: "Cognitive ambiguities", definition: "Contradictions and uncertainties that a child becomes decreasingly tolerant of as intellectual growth produces an awareness of them. (Page 62)" },
+        { term: "Meaningful learning", definition: "The process of anchoring and relating new items and experiences to knowledge that exists in the cognitive framework. (Page 63)" },
+        { term: "Rote learning", definition: "Mechanistic learning that is not related to existing knowledge and experience; adults usually use this only for short-term memory. (Page 63)" },
+        { term: "Natural untutored learning", definition: "The context almost always referred to when comparing child second language acquisition to adult classroom learning. (Page 63)" },
+        { term: "Affective domain", definition: "The emotional perspective on age and acquisition that includes many factors such as empathy, self-esteem, extroversion, inhibition, imitation, anxiety, and attitudes. (Page 63)" },
+        { term: "Egocentricity (affective)", definition: "A factor in human development where very young children see the world as revolving around them, and they see all events as focusing on themselves. (Page 63)" },
+        { term: "Inhibitions", definition: "Invisible walls thrown up verbally or nonverbally to encapsulate a fragile self-concept and protect self-identity in preadolescence. (Page 63)" },
+        { term: "Language ego", definition: "The identity a person develops in reference to the language he or she speaks, a concept proposed by psychologist Alexander Guiora. (Page 64)" },
+        { term: "Defensive mechanism", definition: "A reaction arising during the simultaneous physical, emotional, and cognitive changes of puberty, in which the language ego clings to the security of the native language to protect the fragile ego. (Page 64)" },
+        { term: "Malleable", definition: "A trait describing whether children are more adaptable in accepting the budding new self or second identity that is emerging. (Page 65)" },
+        { term: "Peer pressure", definition: "The drive in children to conform to those around them, which is strong and can be a powerful motivator or source of resistance in a bilingual setting. (Page 65)" },
+        { term: "Affective dissonance", definition: "Emotional conflict or discomfort that preadolescent children might have to overcome as they attempt to learn a second language due to developing inhibitions. (Page 65)" },
+        { term: "Bilingualism", definition: "The ability to use two languages; children learning two languages simultaneously acquire them by the use of similar strategies, essentially learning two first languages. (Page 66)" },
+        { term: "Coordinate bilinguals", definition: "People who learn a second language in separate contexts and operate with two meaning systems. (Page 66)" },
+        { term: "Compound bilinguals", definition: "People who have one meaning system, that is, one context, in which both languages operate. (Page 66)" },
+        { term: "Language mixing", definition: "The blending of two languages, which children generally do not have problems with since bilinguals are not two monolinguals in the same head. (Page 66)" },
+        { term: "Code-switching", definition: "The act of inserting words, phrases, or even longer stretches of one language into the other, especially when communicating with another bilingual. (Page 66)" },
+        { term: "Heritage language acquisition", definition: "The learning of family lineage languages acquired by individuals raised in homes where the dominant language of the region is not spoken or not exclusively spoken in the home. (Page 67)" },
+        { term: "Incomplete acquisition", definition: "A description of a good deal of heritage language acquisition caused by a number of intervening factors like motivation and attitudes. (Page 67)" },
+        { term: "Cognitive benefit of bilingualism", definition: "The advantage of early childhood bilingualism where children are more facile at concept formation and have greater mental flexibility. (Page 67)" },
+        { term: "Interfering effects", definition: "The impact of the first language on the second; research shows the saliency of this does not imply it is the most relevant or most crucial factor in adult second language acquisition. (Page 67)" },
+        { term: "Intralingual errors", definition: "Errors manifested by both adults and children that are the result of an attempt to discover the rules of the L2 apart from the rules of the L1. (Page 67)" },
+        { term: "Creative construction process", definition: "The process children use when learning a second language, just as they do in their first language, emphasizing the absence of L1 interference. (Page 68)" },
+        { term: "Order of acquisition", definition: "A common sequence found among children of several native language backgrounds in learning English morphemes, very similar to that found for children acquiring English as their first language. (Page 68)" },
+        { term: "Frequency of occurrence", definition: "A potential explanation for consistent findings in morpheme-order studies, referring to how often a form appears in the child's input. (Page 68)" },
+        { term: "Perceptual salience", definition: "One of the five determinants of acquisition order, representing how easy it is to see or hear a given structure. (Page 68)" },
+        { term: "Semantic complexity", definition: "One of the five determinants of acquisition order, representing how many meanings are expressed by a particular form. (Page 68)" },
+        { term: "Morpho-phonological regularity", definition: "One of the five determinants of acquisition order, representing the degree to which language forms are affected by their phonological environment. (Page 68)" },
+        { term: "Syntactic category", definition: "One of the five determinants of acquisition order, representing the grammatical characteristics of forms. (Page 68)" },
+        { term: "Frequency in the input", definition: "One of the five determinants of acquisition order, representing the number of times a given structure occurs in speech addressed to the learner. (Page 68)" },
+        { term: "Competence and Performance", definition: "The issue where judging a person's underlying knowledge relies on inference from the actual doing of language data. (Page 70)" },
+        { term: "Comprehension and Production", definition: "The distinction in language skills where both child and adult second language learners will normally hear a distinction before being able to verbalize it. (Page 70)" },
+        { term: "Rote mimicry", definition: "An activity adults are actually better at, especially beyond a few words, though they may not comprehend the meaning of what has been mimicked. (Page 70)" },
+        { term: "Language Acquisition Device (LAD)", definition: "The magic little black box associated with innate capacities, prompting questions of whether it grows up and outlives its usefulness after puberty. (Page 70)" },
+        { term: "Intervening variables", definition: "Cognitive or affective factors that are probably the reason an adult does not acquire a second language successfully, rather than the absence of innate capacities. (Page 70)" },
+        { term: "Universal Grammar (UG)", definition: "The theoretical framework suggesting children's developing L2 grammars are constrained by universal principles, though it is debated if adults have reference to it. (Page 71)" },
+        { term: "Partial access", definition: "The conclusion by some researchers that second language learners only have limited availability to Universal Grammar. (Page 71)" },
+        { term: "Systematicity and Variability", definition: "The observation that L2 development mirrors L1 processes by inducing rules and overgeneralizing, exacerbated by a host of unpredictable cognitive and affective variables. (Page 71)" },
+        { term: "Thought acquisition", definition: "The idea that language acquisition at any age involves the sorting out of new meanings from old and distinguishing concepts in one language that are similar but not quite parallel to the L2. (Page 71)" },
+        { term: "Deep-structure imitators", definition: "Learners, like children, who center on meaning and truth value rather than surface features when imitating language. (Page 72)" },
+        { term: "Surface structure", definition: "The formal features of language that adults can fare much better in imitating by rote if they are explicitly directed to do so. (Page 72)" },
+        { term: "Practice and Frequency", definition: "Elements of language learning where cognitive psychologists agree that meaningfulness is generally more highly important than the sheer number of times spent repeating a form. (Page 72)" },
+        { term: "Input", definition: "Information delivered to the learner, which has emerged as one of the most fundamental keys to acquisition at any age along with how it is processed and acted upon. (Page 72)" },
+        { term: "Pragmatic elements", definition: "Subtle aspects of discourse such as metaphor, humor, shades of meaning, double entendres, and nonverbal cues that older children and adults have superior ability to utilize. (Page 73)" },
+        { term: "Age-and-Acquisition-Inspired Teaching Methods", definition: "Methods in language teaching methodology inspired by observation of and research on child second language acquisition. (Page 73)" },
+        { term: "Total Physical Response (TPR)", definition: "A teaching method founded by James Asher where students do a great deal of listening accompanied by physical responses like reaching, grabbing, moving, and looking. (Page 73)" },
+        { term: "James Asher", definition: "The founder of the Total Physical Response method, who noted that children appear to do a lot of listening before they speak in learning their first language. (Page 73)" },
+        { term: "Imperative mood", definition: "The grammatical form, or commands, typically utilized in a TPR class to get learners to act out physical responses. (Page 73)" },
+        { term: "The Natural Approach", definition: "A methodological offshoot of Krashen's work claiming adults should acquire a second language just as children do, by picking up a language rather than studying grammar. (Page 74)" },
+        { term: "Comprehensible input", definition: "Spoken language that is understandable to the learner or just a little beyond the learner's level, which the teacher delivers in the Natural Approach. (Page 74)" },
+        { term: "Delay of oral production", definition: "A feature of the Natural Approach where learners do not need to say anything until they feel ready to do so, though critics note this can be pushed too far. (Page 74)" },
+        { term: "Individual differences", definition: "The rubric under which characteristics that distinguish one individual from another are addressed. (Page 109)" },
+        { term: "Good language learners", definition: "Learners who take charge of their own learning, are unafraid to creatively experiment with the language, learn chunks of language, use various memory strategies, and monitor themselves. (Page 110)" },
+        { term: "Strategies-based instruction (SBI)", definition: "A movement that spurred detailed classifications of strategies to provide teachers with a taxonomy of strategic options for their learners. (Page 110)" },
+        { term: "Sociocultural approach", definition: "An approach that views learners as participants in a community of language users in local contexts in which specific practices create possibilities for them to learn. (Page 111)" },
+        { term: "Identity", definition: "The concept that each learner creates in a socially constructed context, fundamental to the sociocultural approach. (Page 111)" },
+        { term: "Investment", definition: "The process by which learners create avenues of success as they invest in their learning process. (Page 111)" },
+        { term: "Entry behavior", definition: "What a learner brings to the table in learning a language, of which styles are a part. (Page 111)" },
+        { term: "Styles", definition: "General characteristics of intellectual functioning and personality type that pertain to you as an individual, and that differentiate you from someone else; they are consistent and rather enduring tendencies or preferences within an individual. (Page 111)" },
+        { term: "Learning strategies", definition: "Specific methods of approaching a problem or task, techniques for achieving a particular end, or designs for controlling and manipulating certain information. (Page 112)" },
+        { term: "L2 learning strategies", definition: "Specific actions, behaviors, steps, or techniques used by students to enhance their own learning. (Page 112)" },
+        { term: "Cognitive style", definition: "A rather amorphous link between personality and cognition that dictates the way we learn things in general and the way we address a problem. (Page 113)" },
+        { term: "Learning styles", definition: "Cognitive, affective, and physiological traits that are relatively stable indicators of how learners perceive, interact with, and respond to the learning environment; they mediate between emotion and cognition. (Page 113)" },
+        { term: "Bi-cognitive", definition: "A person who can manipulate both ends of a style continuum, perhaps characterizing an intelligent and successful person. (Page 113)" },
+        { term: "Random (nonlinear) vs. sequential (linear) styles", definition: "A learning style continuum contrasting an unstructured approach with a step-by-step approach. (Page 113)" },
+        { term: "Global vs. particular styles", definition: "A learning style continuum contrasting an attention to the big picture with an attention to details. (Page 113)" },
+        { term: "Inductive vs. deductive styles", definition: "A learning style continuum contrasting moving from specific instances to general rules versus moving from general rules to specific instances. (Page 113)" },
+        { term: "Synthetic (integrative) vs. analytical (systematizing) styles", definition: "A learning style continuum contrasting the combining of parts into a whole with the breaking down of a whole into its parts. (Page 113)" },
+        { term: "Concrete vs. abstract styles", definition: "A learning style continuum contrasting attention to the physical or literal with attention to concepts and ideas. (Page 113)" },
+        { term: "Field independence", definition: "The perception of a particular, relevant item or factor in a \"field\" of distracting items. (Page 114)" },
+        { term: "Field dependence (field sensitivity)", definition: "The tendency to be \"dependent\" on the total field so that the parts embedded within the field are not distracting, as you perceive the total field as a unified whole. (Page 114)" },
+        { term: "Field independent (FI) style", definition: "A style that enables you to distinguish parts from a whole, to concentrate on something, or to analyze separate variables without the contamination of neighboring variables. (Page 114)" },
+        { term: "Cognitive tunnel vision", definition: "A detrimental result of too much field independence, where you see only the parts and not their relationship to the whole. (Page 114)" },
+        { term: "Field sensitive (FS) style", definition: "A style that enables you to perceive the whole picture, the larger view, the general configuration of a problem or idea or event. (Page 114)" },
+        { term: "Group Embedded Figures Test", definition: "The standard measure of field independence, which only measures visual perception. (Page 115)" },
+        { term: "Natural language learning", definition: "Communication that occurs in the \"field,\" beyond the constraints of the classroom, which is most likely aided by a field sensitive style. (Page 115)" },
+        { term: "Left-brain dominance", definition: "A brain lateralization associated with logical, analytical thought, with mathematical and linear processing of information. (Page 116)" },
+        { term: "Right-brain dominance", definition: "A brain lateralization that perceives and remembers visual, tactile, and auditory images; it is more efficient in processing holistic, integrative, and emotional information. (Page 116)" },
+        { term: "Left-brain characteristics", definition: "Traits that include relying strongly on the intellect, remembering names, responding to verbal instructions, experimenting systematically, making objective judgments, and reading analytically. (Page 116)" },
+        { term: "Right-brain characteristics", definition: "Traits that include using intuitive processes, remembering faces, responding to demonstrated instructions, experimenting randomly, making subjective judgments, and reading with synthesis. (Page 116)" },
+        { term: "Corpus callosum", definition: "The mechanism through which messages are sent back and forth so that both hemispheres are involved in much of the neurological activity of the human brain. (Page 116)" },
+        { term: "Neurological bimodality", definition: "A concept used to analyze the way in which various language teaching methods have failed by appealing too strongly to left-brain processes. (Page 117)" },
+        { term: "Ambiguity tolerant (AT)", definition: "Being relatively open-minded in at least entertaining ideologies, events, and facts that contradict one's own views. (Page 117)" },
+        { term: "Ambiguity intolerance (AI)", definition: "A tendency to reject items that are contradictory or incongruent with one's existing system, wishing to see every proposition fit into an acceptable place in cognitive organization. (Page 117)" },
+        { term: "Wishy-washiness", definition: "A detrimental effect of too much ambiguity tolerance, adopting an \"anything goes\" mentality and inefficiently subsuming necessary facts into cognitive organizational structure. (Page 118)" },
+        { term: "Dogmatic mind", definition: "A rigid and brittle mind that results from ambiguity intolerance closing the mind too soon, especially if ambiguity is perceived as a threat. (Page 118)" },
+        { term: "Compartmentalizer", definition: "A person who sees everything in black and white with no shades of gray, likely struggling in the overwhelmingly ambiguous process of learning a second language. (Page 118)" },
+        { term: "Impulsive (intuitive) style", definition: "A style that involves making a number of different gambles on the basis of \"hunches,\" with possibly several successive gambles before a solution is achieved. (Page 119)" },
+        { term: "Reflective (systematic) style", definition: "A tendency to make slower, more calculated decisions by weighing all the considerations in a problem, working out all the loopholes, and then venturing a solution. (Page 119)" },
+        { term: "Psycholinguistic guessing game", definition: "A characterization of the reading process, which impulsive persons often master as they are usually faster readers. (Page 119)" },
+        { term: "Fast-accurate learners", definition: "Good guessers who combine speed and accuracy, often proving to be better language learners on standardized tests. (Page 119)" },
+        { term: "Visual learners", definition: "Learners who tend to prefer reading and studying charts, drawings, and other graphic information. (Page 120)" },
+        { term: "Auditory learners", definition: "Learners who prefer listening to lectures and audiotapes. (Page 120)" },
+        { term: "Kinesthetic learners", definition: "Learners who show a preference for demonstrations and physical activity involving bodily movement. (Page 120)" },
+        { term: "Self-check questionnaire", definition: "The most common method available for helping learners to identify their own styles, preferences, strengths, and weaknesses. (Page 120)" },
+        { term: "Learning Style Inventory (LSI)", definition: "A standardized self-check measure developed by Kolb for helping learners identify their styles. (Page 120)" },
+        { term: "Style Analysis Survey", definition: "A self-check measure developed by Oxford for identifying style preferences. (Page 120)" },
+        { term: "Left-brain processing advantages", definition: "Analyzing linguistic systems, rules, structures, definitions; perceiving the logic of language systems. (Page 121)" },
+        { term: "Right-brain processing advantages", definition: "Integrating diverse linguistic input; comprehending and producing metaphors. (Page 121)" },
+        { term: "Field Independence advantages", definition: "Expressing and comprehending key ideas concisely; remembering lexical and syntactic details. (Page 121)" },
+        { term: "Field Sensitivity advantages", definition: "Getting the overall gist of oral and written input; reading between the lines of oral and written input. (Page 121)" },
+        { term: "Ambiguity tolerance advantages", definition: "Transcending linguistic complexity perceived as difficult; maintaining attention to a difficult conversation or text. (Page 121)" },
+        { term: "Ambiguity intolerance advantages", definition: "Ascertaining order and system within complexity; questioning/clarifying misunderstood information. (Page 121)" },
+        { term: "Reflectivity advantages", definition: "Taking time to mentally sort through linguistic complexity; speaking out only when certain of linguistic systems. (Page 121)" },
+        { term: "Impulsivity advantages", definition: "Taking linguistic risks in the face of possible error; taking initiative in conversations. (Page 121)" },
+        { term: "Teacher-centered", definition: "The methodology prevalent before the 1970s where students sat down dutifully and waited for the teacher to tell them what to do. (Page 122)" },
+        { term: "Learner-centered approaches", definition: "Educational approaches that emphasize the value of learner autonomy, discovery learning, problem-posing, and group work. (Page 122)" },
+        { term: "Learner autonomy", definition: "The principle that encourages learners to self-start, take charge, and take responsibility for their own learning. (Page 122)" },
+        { term: "Context-sensitive model", definition: "A model proposed to foster autonomy in cultures where learners traditionally rely heavily on teachers as managers of their learning. (Page 122)" },
+        { term: "Glocalization", definition: "A combination of both global and local considerations of the concept of autonomy in non-Western cultures, involving critical awareness of specific cultural backdrops and impacts. (Page 122)" },
+        { term: "Metacognitive awareness", definition: "The consciousness of one's own ongoing learning process that modern language programs offer occasions for learners to develop. (Page 123)" },
+        { term: "Strategic awareness", definition: "The conscious application of appropriate strategies. (Page 123)" },
+        { term: "Self-regulation", definition: "The autonomous process of developing awareness, setting goals, monitoring performance, using effective strategies, and holding positive beliefs about oneself. (Page 123)" },
+        { term: "Strategic self-regulation (S2R)", definition: "The self-stimulated application by a learner of cognitive, affective, and sociocultural-interactive strategies. (Page 124)" },
+        { term: "Strategically self-regulated learners", definition: "Learners who actively participate in their autonomous learning process, control various aspects of their learning, regulate their cognitive and affective states, and form positive beliefs about themselves. (Page 124)" },
+        { term: "Strategies", definition: "Procedures that facilitate a learning task, which are most often conscious and goal-driven, and vary considerably within each individual. (Page 125)" },
+        { term: "Tactics", definition: "Specific manifestations of a strategy or meta-strategy by a particular learner in a given setting for a certain purpose. (Page 125)" },
+        { term: "Meta-strategies", definition: "Broad categories for general management and control of learning strategies, including cognitive, affective, and sociocultural-interactive strategies. (Page 125)" },
+        { term: "Cognitive strategies", definition: "Strategies that help the learner construct, transform, and apply L2 knowledge. (Page 125)" },
+        { term: "Planning", definition: "A cognitive strategy tactic involving previewing, reviewing, setting schedules, and deciding to attend to a specific aspect of language input. (Page 126)" },
+        { term: "Organizing", definition: "A cognitive strategy tactic involving deciding to attend to specific aspects of language input or situational details that cue retention, reordering, classifying, and labeling items. (Page 126)" },
+        { term: "Monitoring", definition: "A cognitive strategy tactic involving correcting one's speech for accuracy in pronunciation, grammar, vocabulary, or imitating a language model. (Page 126)" },
+        { term: "Evaluating", definition: "A cognitive strategy tactic involving checking the outcomes of one's own language learning against an internal measure of completeness and accuracy. (Page 126)" },
+        { term: "Using senses", definition: "A cognitive strategy tactic involving creating visualizations and pictures to remember, noticing phonological sounds, or acting out a word. (Page 126)" },
+        { term: "Activating knowledge", definition: "A cognitive strategy tactic involving using the first language for comparison/contrast to remember words and forms, applying rules by deduction, or using translation. (Page 126)" },
+        { term: "Contextualization", definition: "A cognitive strategy tactic involving placing a word or phrase in a meaningful language sequence or relating new information to other concepts in memory. (Page 126)" },
+        { term: "Going beyond the data", definition: "A cognitive strategy tactic involving guessing meanings of new items, predicting words or forms from the context. (Page 126)" },
+        { term: "Affective strategies", definition: "Strategies that help the learner to employ beneficial emotional energy, form positive attitudes toward the learning process, and generate and maintain motivation. (Page 126)" },
+        { term: "Activating supportive emotions", definition: "An affective strategy tactic involving encouraging oneself, making positive statements, noticing what one has accomplished, and writing a language learning diary. (Page 127)" },
+        { term: "Minimizing negative emotions", definition: "An affective strategy tactic involving using relaxation to lower fear or anxiety, using positive self-talk, or making a list of \"to do\" items to avoid feeling overwhelmed. (Page 127)" },
+        { term: "Generating motivation", definition: "An affective strategy tactic involving learning about the culture of a language, setting personal goals, and turning attention away from tests. (Page 127)" },
+        { term: "Building positive attitudes", definition: "An affective strategy tactic involving using relaxation to lower fear or anxiety, generating interesting activities to lower boredom, and empathizing with others. (Page 127)" },
+        { term: "Sociocultural-interactive (S-I) strategies", definition: "Tactics that help the learner interact and communicate despite knowledge gaps and deal effectively with culture. (Page 127)" },
+        { term: "Interacting to learn", definition: "An S-I strategy tactic involving cooperating with peers to obtain feedback, pool information, or model a language activity. (Page 127)" },
+        { term: "Overcoming knowledge gaps", definition: "An S-I strategy tactic involving asking a teacher or native speaker for repetition, paraphrasing, explanation, or questioning for clarification. (Page 127)" },
+        { term: "Guessing intelligently", definition: "An S-I strategy tactic involving using linguistic clues in lexicon, grammar, or phonology to predict, or using discourse markers to comprehend. (Page 127)" },
+        { term: "Generating conversation", definition: "An S-I strategy tactic involving initiating conversation with known discourse gambits, maintaining conversation with affirmations, and asking questions. (Page 127)" },
+        { term: "Activating sociocultural schemata", definition: "An S-I strategy tactic involving asking questions about culture or reading about culture. (Page 127)" },
+        { term: "Compensatory strategies", definition: "Tricks and techniques designed to make up for gaps in one's ability, often spelling the difference between a person who \"survives\" in a language and one who does not. (Page 128)" },
+        { term: "Avoidance", definition: "A compensatory tactic for preventing a pitfall or linguistic weakness that could break down communicative flow; psychologically, a combination of face-saving and maintaining communicative interaction. (Page 128)" },
+        { term: "Syntactic, phonological, lexical, and topic avoidance", definition: "Common tactics in successful learners to prevent using elements of language that pose difficulty. (Page 128)" },
+        { term: "Circumlocution", definition: "A compensatory tactic describing an object or idea with a definition, such as saying \"that thing you open bottles with\" for corkscrew. (Page 129)" },
+        { term: "Approximation", definition: "A compensatory tactic using an alternative term which expresses the meaning of the target lexical item as closely as possible. (Page 129)" },
+        { term: "Word coinage", definition: "A compensatory tactic involving creating a nonexistent L2 word based on a supposed rule. (Page 129)" },
+        { term: "Nonverbal signals", definition: "A compensatory tactic involving mime, gesture, facial expression, or sound imitation. (Page 129)" },
+        { term: "Prefabricated patterns", definition: "A compensatory tactic involving the use of memorized stock phrases or chunks of language, usually for \"survival\" purposes without internalized knowledge of their components. (Page 129)" },
+        { term: "Code switching", definition: "A compensatory tactic using an L1 word with L1 pronunciation while speaking in L2 to fill in missing knowledge. (Page 129)" },
+        { term: "Appeal to authority", definition: "A compensatory strategy involving a direct or indirect request for help, asking a proficient speaker or teacher for the correct form, or consulting a dictionary. (Page 129)" },
+        { term: "Keeping the floor", definition: "A compensatory tactic using fillers or hesitation devices to fill pauses and to gain time to think. (Page 129)" },
+        { term: "Learning (input) strategies", definition: "Strategies that emphasize receptive skills of listening and reading in contrast to producing language. (Page 130)" },
+        { term: "Communication (output) strategies", definition: "Potentially conscious plans for solving what to an individual presents itself as a problem in reaching a particular communicative goal. (Page 130)" },
+        { term: "Strategic competence", definition: "The ability in which learners bring to bear all the possible facets of their growing competence in order to send clear messages in the second language. (Page 131)" },
+        { term: "Strategy Inventory for Language Learning (SILL)", definition: "One of the most widely used measurement instruments developed by Oxford for learners to identify strategies, consisting of a 50-item questionnaire on a five-point scale. (Page 131)" },
+        { term: "Written diaries and journals", definition: "Forms of identifying styles and strategies that involve learners recording their learning experiences and reflections. (Page 132)" },
+        { term: "Think-aloud protocols", definition: "A method of identifying strategies that requires a learner to verbally respond to questions like \"Why did you hesitate and restate that verb form?\" while completing a task. (Page 132)" },
+        { term: "Student portfolios", definition: "A collection of a learner's work used as a form of identifying styles and strategies. (Page 132)" },
+        { term: "Textbook-embedded instruction", definition: "Strategy training that incorporates hints and strategic suggestions within a student textbook and a teacher's manual. (Page 132)" },
+        { term: "Learner strategy training / Styles- and strategies-based instruction (SSBI)", definition: "Terms generically referring to the application of strategies to classroom learning and teaching learners how to learn. (Page 132)" },
+        { term: "Styles Awareness Checklist (SAC)", definition: "A simple scaled questionnaire instrument designed to familiarize students with their own preferences in learning and highlight \"good language learner\" characteristics. (Page 133)" },
+        { term: "Maxims for good language learners", definition: "A set of principles built into the Styles Awareness Checklist, including lowering inhibitions, encouraging risk taking, building self-confidence, developing intrinsic motivation, and engaging in cooperative learning. (Page 135)" },
+        { term: "Building strategic techniques", definition: "Classroom methods used by teachers, such as playing guessing games to lower inhibitions or praising students for good guesses to help them use their intuition, to integrate strategy practice into language learning. (Page 136)" }
+    ];
+
+    let currentIndex = 0;
+    let incorrectTerms = []; 
+
+    const cardJumperEl = document.getElementById('card-jumper');
+    const totalCardsEl = document.getElementById('total-cards');
+    const definitionEl = document.getElementById('definition');
+    const hintEl = document.getElementById('hint');
+    const inputEl = document.getElementById('answer-input');
+    const feedbackEl = document.getElementById('feedback');
+    const nextBtn = document.getElementById('next-btn');
+    const incorrectContainer = document.getElementById('incorrect-container');
+    const incorrectListEl = document.getElementById('incorrect-list');
+
+    function generateHint(term) {
+        const cleanTerm = term.replace(/\s*\([^)]*\)/g, ''); 
+        return cleanTerm.split(' ').map(word => {
+            let firstChar = word[0];
+            if (!firstChar.match(/[a-zA-Z0-9]/)) return word; 
+            return firstChar + '_'.repeat(word.length - 1);
+        }).join(' ');
+    }
+
+    function loadTerm() {
+        const currentItem = termsList[currentIndex];
+        
+        cardJumperEl.value = currentIndex + 1;
+        totalCardsEl.textContent = termsList.length;
+
+        definitionEl.textContent = currentItem.definition;
+        hintEl.textContent = generateHint(currentItem.term);
+        
+        inputEl.value = '';
+        inputEl.disabled = false;
+        inputEl.focus();
+        feedbackEl.innerHTML = '';
+        nextBtn.style.display = 'none';
+    }
+
+    function checkAnswer() {
+        const userAnswer = inputEl.value.trim().toLowerCase();
+        const correctAnswerString = termsList[currentIndex].term;
+        const correctAnswerClean = correctAnswerString.replace(/\s*\([^)]*\)/g, '').trim().toLowerCase();
+
+        if (userAnswer === correctAnswerClean || userAnswer === correctAnswerString.toLowerCase()) {
+            feedbackEl.innerHTML = `<span class="correct">Correct!</span>`;
+        } else {
+            feedbackEl.innerHTML = `
+                <span class="incorrect">Incorrect. The correct answer is:</span>
+                <span class="correct-answer-text">${correctAnswerString}</span>
+            `;
+            addIncorrectTerm(correctAnswerString);
+        }
+
+        inputEl.disabled = true; 
+        nextBtn.style.display = 'inline-block';
+        nextBtn.textContent = "Next Term (Press Enter)";
+    }
+
+    function goToNext() {
+        currentIndex++;
+        if (currentIndex >= termsList.length) {
+            currentIndex = 0; 
+        }
+        loadTerm();
+    }
+
+    function addIncorrectTerm(termString) {
+        if (!incorrectTerms.includes(termString)) {
+            incorrectTerms.push(termString);
+            renderIncorrectList();
+        }
+    }
+
+    function renderIncorrectList() {
+        if (incorrectTerms.length === 0) {
+            incorrectContainer.style.display = 'none';
+            return;
+        }
+        
+        incorrectContainer.style.display = 'block';
+        incorrectListEl.innerHTML = ''; 
+        
+        incorrectTerms.forEach((term, index) => {
+            const li = document.createElement('li');
+            
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'li-header';
+            
+            const textSpan = document.createElement('span');
+            textSpan.textContent = term;
+
+            const btnGroup = document.createElement('div');
+            btnGroup.className = 'btn-group';
+
+            const defBtn = document.createElement('button');
+            defBtn.className = 'def-btn';
+            defBtn.innerHTML = '📄';
+            defBtn.title = "Show definition";
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '&times;';
+            deleteBtn.title = "Remove from review list";
+            
+            btnGroup.appendChild(defBtn);
+            btnGroup.appendChild(deleteBtn);
+            
+            headerDiv.appendChild(textSpan);
+            headerDiv.appendChild(btnGroup);
+
+            const defDisplay = document.createElement('div');
+            defDisplay.className = 'term-def-display';
+            
+            const foundTerm = termsList.find(t => t.term === term);
+            defDisplay.textContent = foundTerm ? foundTerm.definition : "Definition not found.";
+
+            defBtn.onclick = function() {
+                if (defDisplay.style.display === 'block') {
+                    defDisplay.style.display = 'none';
+                } else {
+                    defDisplay.style.display = 'block';
+                }
+            };
+
+            deleteBtn.onclick = function() {
+                incorrectTerms.splice(index, 1);
+                renderIncorrectList();
+            };
+            
+            li.appendChild(headerDiv);
+            li.appendChild(defDisplay);
+            incorrectListEl.appendChild(li);
+        });
+    }
+
+    inputEl.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            if (!inputEl.disabled && inputEl.value.trim() !== '') {
+                checkAnswer();
+            } 
+        }
+    });
+
+    cardJumperEl.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            let jumpTo = parseInt(cardJumperEl.value, 10);
+            
+            if (!isNaN(jumpTo) && jumpTo >= 1 && jumpTo <= termsList.length) {
+                currentIndex = jumpTo - 1;
+                loadTerm();
+            } else {
+                cardJumperEl.value = currentIndex + 1; 
+            }
+        }
+    });
+
+    cardJumperEl.addEventListener('blur', function() {
+        cardJumperEl.value = currentIndex + 1;
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && inputEl.disabled && document.activeElement !== cardJumperEl) {
+            goToNext();
+        }
+    });
+
+    nextBtn.addEventListener('click', goToNext);
+
+    loadTerm();
+</script>
+
+</body>
+</html>
