@@ -23,9 +23,8 @@
             max-width: 600px;
             width: 90%;
             text-align: center;
-            position: relative; /* For counter positioning */
+            position: relative;
         }
-        /* Counter Styling */
         #counter {
             position: absolute;
             top: 1.5rem;
@@ -89,7 +88,7 @@
         /* Review List Styling */
         .list-container {
             margin-top: 2rem;
-            display: none; /* Hidden until you get a word wrong */
+            display: none;
         }
         .list-container h2 {
             font-size: 1.2rem;
@@ -109,29 +108,75 @@
             margin: 0.5rem 0;
             padding: 0.8rem 1rem;
             border-radius: 6px;
+            border: 1px solid #eee;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column; /* Allows definition to slide down below the term */
+        }
+        
+        /* Layout for the word and the buttons */
+        .li-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid #eee;
-            font-size: 1.1rem;
+            width: 100%;
         }
-        .delete-btn {
-            background: #ff4d4d;
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem; /* Space between the two buttons */
+        }
+
+        /* The new Definition Toggle Button */
+        .def-btn {
+            background: #28a745; /* Green */
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            padding: 0;
+            transition: background-color 0.2s;
+        }
+        .def-btn:hover { background: #218838; }
+
+        /* The Delete (X) Button */
+        .delete-btn {
+            background: #ff4d4d; /* Red */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             padding: 0;
             line-height: 1;
+            transition: background-color 0.2s;
         }
         .delete-btn:hover { background: #cc0000; }
+
+        /* The drop-down definition text inside the list */
+        .term-def-display {
+            display: none; /* Hidden until button is clicked */
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background-color: #f1f3f5;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.4;
+            border-left: 4px solid #28a745;
+        }
     </style>
 </head>
 <body>
@@ -574,9 +619,8 @@
 ];
 
     let currentIndex = 0;
-    let incorrectTerms = []; // Array to track words you get wrong
+    let incorrectTerms = []; 
 
-    // Grab elements from the HTML
     const counterEl = document.getElementById('counter');
     const definitionEl = document.getElementById('definition');
     const hintEl = document.getElementById('hint');
@@ -586,29 +630,22 @@
     const incorrectContainer = document.getElementById('incorrect-container');
     const incorrectListEl = document.getElementById('incorrect-list');
 
-    // GENERATE THE HINT (e.g., "second language" -> "s_____ l______")
     function generateHint(term) {
-        // We remove text in parenthesis for the hint generation if you have things like "(L2)"
         const cleanTerm = term.replace(/\s*\([^)]*\)/g, ''); 
         return cleanTerm.split(' ').map(word => {
-            // Keep alphanumeric characters, replace others with underscores
             let firstChar = word[0];
-            if (!firstChar.match(/[a-zA-Z0-9]/)) return word; // Skip punctuation only words
+            if (!firstChar.match(/[a-zA-Z0-9]/)) return word; 
             return firstChar + '_'.repeat(word.length - 1);
         }).join(' ');
     }
 
-    // LOAD THE CURRENT TERM
     function loadTerm() {
         const currentItem = termsList[currentIndex];
         
-        // Update Counter
         counterEl.textContent = `Card ${currentIndex + 1} of ${termsList.length}`;
-
         definitionEl.textContent = currentItem.definition;
         hintEl.textContent = generateHint(currentItem.term);
         
-        // Reset the input and feedback
         inputEl.value = '';
         inputEl.disabled = false;
         inputEl.focus();
@@ -616,11 +653,8 @@
         nextBtn.style.display = 'none';
     }
 
-    // CHECK THE ANSWER
     function checkAnswer() {
-        // Clean both answers for a forgiving comparison (lowercase, remove extra spaces)
         const userAnswer = inputEl.value.trim().toLowerCase();
-        // Remove text in parentheses from the correct answer to make grading easier
         const correctAnswerString = termsList[currentIndex].term;
         const correctAnswerClean = correctAnswerString.replace(/\s*\([^)]*\)/g, '').trim().toLowerCase();
 
@@ -631,90 +665,117 @@
                 <span class="incorrect">Incorrect. The correct answer is:</span>
                 <span class="correct-answer-text">${correctAnswerString}</span>
             `;
-            // Add to the review list
             addIncorrectTerm(correctAnswerString);
         }
 
-        // Lock the text box and show the "Next" button
         inputEl.disabled = true; 
         nextBtn.style.display = 'inline-block';
         nextBtn.textContent = "Next Term (Press Enter)";
     }
 
-    // GO TO NEXT TERM
     function goToNext() {
         currentIndex++;
         if (currentIndex >= termsList.length) {
-            currentIndex = 0; // Loop back to the start
+            currentIndex = 0; 
         }
         loadTerm();
     }
 
-    // ADD A TERM TO THE REVIEW LIST
     function addIncorrectTerm(termString) {
-        // Only add it if it's not already on the list
         if (!incorrectTerms.includes(termString)) {
             incorrectTerms.push(termString);
             renderIncorrectList();
         }
     }
 
-    // DRAW THE REVIEW LIST ON THE SCREEN
+    // UPDATED FUNCTION: Now includes the definition toggle logic
     function renderIncorrectList() {
-        // Hide container if list is empty
         if (incorrectTerms.length === 0) {
             incorrectContainer.style.display = 'none';
             return;
         }
         
         incorrectContainer.style.display = 'block';
-        incorrectListEl.innerHTML = ''; // Clear current list
+        incorrectListEl.innerHTML = ''; 
         
-        // Create an entry for each missed word
         incorrectTerms.forEach((term, index) => {
             const li = document.createElement('li');
             
+            // 1. Create the top row (Word + Buttons)
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'li-header';
+            
             const textSpan = document.createElement('span');
             textSpan.textContent = term;
-            
+
+            const btnGroup = document.createElement('div');
+            btnGroup.className = 'btn-group';
+
+            // Document Button (Shows definition)
+            const defBtn = document.createElement('button');
+            defBtn.className = 'def-btn';
+            defBtn.innerHTML = '📄';
+            defBtn.title = "Show definition";
+
+            // Delete Button
             const deleteBtn = document.createElement('button');
             deleteBtn.className = 'delete-btn';
-            deleteBtn.innerHTML = '&times;'; // HTML entity for 'x'
+            deleteBtn.innerHTML = '&times;';
             deleteBtn.title = "Remove from review list";
             
-            // When 'x' is clicked, remove the item and re-draw the list
+            btnGroup.appendChild(defBtn);
+            btnGroup.appendChild(deleteBtn);
+            
+            headerDiv.appendChild(textSpan);
+            headerDiv.appendChild(btnGroup);
+
+            // 2. Create the hidden definition text area below
+            const defDisplay = document.createElement('div');
+            defDisplay.className = 'term-def-display';
+            
+            // Find the definition for this specific term from the main array
+            const foundTerm = termsList.find(t => t.term === term);
+            defDisplay.textContent = foundTerm ? foundTerm.definition : "Definition not found.";
+
+            // 3. Add Click Events
+            // Toggle the definition display on/off
+            defBtn.onclick = function() {
+                if (defDisplay.style.display === 'block') {
+                    defDisplay.style.display = 'none';
+                } else {
+                    defDisplay.style.display = 'block';
+                }
+            };
+
+            // Remove item from the array and redraw the list
             deleteBtn.onclick = function() {
                 incorrectTerms.splice(index, 1);
                 renderIncorrectList();
             };
             
-            li.appendChild(textSpan);
-            li.appendChild(deleteBtn);
+            // Assemble the list item
+            li.appendChild(headerDiv);
+            li.appendChild(defDisplay);
             incorrectListEl.appendChild(li);
         });
     }
 
-    // LISTEN FOR 'ENTER' KEY
     inputEl.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
-            // If the input is active, check the answer
             if (!inputEl.disabled && inputEl.value.trim() !== '') {
                 checkAnswer();
             } 
         }
     });
 
-    // LISTEN FOR ANY KEYPRESS WHEN INPUT IS DISABLED (To quickly move to next card)
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Enter' && inputEl.disabled) {
             goToNext();
         }
     });
 
-    // LISTEN FOR "NEXT" BUTTON CLICK
     nextBtn.addEventListener('click', goToNext);
 
-    // Start the app
     loadTerm();
 </script>
 
