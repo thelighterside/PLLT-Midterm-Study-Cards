@@ -25,14 +25,43 @@
             text-align: center;
             position: relative;
         }
-        #counter {
+        
+        /* Updated Counter Styling */
+        #counter-container {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
             font-size: 0.9rem;
             color: #888;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
+        #card-jumper {
+            width: 45px;
+            padding: 0.2rem;
+            font-size: 0.9rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            color: #007bff;
+            background-color: #f8f9fa;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        #card-jumper:focus {
+            outline: none;
+            border-color: #007bff;
+            background-color: #fff;
+        }
+        /* Hide the default up/down arrows on number inputs */
+        #card-jumper::-webkit-inner-spin-button, 
+        #card-jumper::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
         h1 {
             font-size: 1.5rem;
             color: #333;
@@ -111,25 +140,20 @@
             border: 1px solid #eee;
             font-size: 1.1rem;
             display: flex;
-            flex-direction: column; /* Allows definition to slide down below the term */
+            flex-direction: column;
         }
-        
-        /* Layout for the word and the buttons */
         .li-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
         }
-
         .btn-group {
             display: flex;
-            gap: 0.5rem; /* Space between the two buttons */
+            gap: 0.5rem;
         }
-
-        /* The new Definition Toggle Button */
         .def-btn {
-            background: #28a745; /* Green */
+            background: #28a745;
             color: white;
             border: none;
             border-radius: 6px;
@@ -144,10 +168,8 @@
             transition: background-color 0.2s;
         }
         .def-btn:hover { background: #218838; }
-
-        /* The Delete (X) Button */
         .delete-btn {
-            background: #ff4d4d; /* Red */
+            background: #ff4d4d;
             color: white;
             border: none;
             border-radius: 6px;
@@ -164,10 +186,8 @@
             transition: background-color 0.2s;
         }
         .delete-btn:hover { background: #cc0000; }
-
-        /* The drop-down definition text inside the list */
         .term-def-display {
-            display: none; /* Hidden until button is clicked */
+            display: none;
             margin-top: 0.8rem;
             padding: 0.8rem;
             background-color: #f1f3f5;
@@ -182,7 +202,10 @@
 <body>
 
 <div class="container">
-    <div id="counter"></div>
+    <div id="counter-container">
+        Card <input type="number" id="card-jumper" min="1" title="Type a number and press Enter to jump"> of <span id="total-cards"></span>
+    </div>
+    
     <h1>Study Flashcards</h1>
     <p id="definition">Loading...</p>
     <p id="hint"></p>
@@ -621,7 +644,8 @@
     let currentIndex = 0;
     let incorrectTerms = []; 
 
-    const counterEl = document.getElementById('counter');
+    const cardJumperEl = document.getElementById('card-jumper');
+    const totalCardsEl = document.getElementById('total-cards');
     const definitionEl = document.getElementById('definition');
     const hintEl = document.getElementById('hint');
     const inputEl = document.getElementById('answer-input');
@@ -642,7 +666,10 @@
     function loadTerm() {
         const currentItem = termsList[currentIndex];
         
-        counterEl.textContent = `Card ${currentIndex + 1} of ${termsList.length}`;
+        // Update Jumper and Total Count
+        cardJumperEl.value = currentIndex + 1;
+        totalCardsEl.textContent = termsList.length;
+
         definitionEl.textContent = currentItem.definition;
         hintEl.textContent = generateHint(currentItem.term);
         
@@ -688,7 +715,6 @@
         }
     }
 
-    // UPDATED FUNCTION: Now includes the definition toggle logic
     function renderIncorrectList() {
         if (incorrectTerms.length === 0) {
             incorrectContainer.style.display = 'none';
@@ -701,7 +727,6 @@
         incorrectTerms.forEach((term, index) => {
             const li = document.createElement('li');
             
-            // 1. Create the top row (Word + Buttons)
             const headerDiv = document.createElement('div');
             headerDiv.className = 'li-header';
             
@@ -711,13 +736,11 @@
             const btnGroup = document.createElement('div');
             btnGroup.className = 'btn-group';
 
-            // Document Button (Shows definition)
             const defBtn = document.createElement('button');
             defBtn.className = 'def-btn';
             defBtn.innerHTML = '📄';
             defBtn.title = "Show definition";
 
-            // Delete Button
             const deleteBtn = document.createElement('button');
             deleteBtn.className = 'delete-btn';
             deleteBtn.innerHTML = '&times;';
@@ -729,16 +752,12 @@
             headerDiv.appendChild(textSpan);
             headerDiv.appendChild(btnGroup);
 
-            // 2. Create the hidden definition text area below
             const defDisplay = document.createElement('div');
             defDisplay.className = 'term-def-display';
             
-            // Find the definition for this specific term from the main array
             const foundTerm = termsList.find(t => t.term === term);
             defDisplay.textContent = foundTerm ? foundTerm.definition : "Definition not found.";
 
-            // 3. Add Click Events
-            // Toggle the definition display on/off
             defBtn.onclick = function() {
                 if (defDisplay.style.display === 'block') {
                     defDisplay.style.display = 'none';
@@ -747,19 +766,18 @@
                 }
             };
 
-            // Remove item from the array and redraw the list
             deleteBtn.onclick = function() {
                 incorrectTerms.splice(index, 1);
                 renderIncorrectList();
             };
             
-            // Assemble the list item
             li.appendChild(headerDiv);
             li.appendChild(defDisplay);
             incorrectListEl.appendChild(li);
         });
     }
 
+    // LISTENER FOR MAIN ANSWER INPUT
     inputEl.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             if (!inputEl.disabled && inputEl.value.trim() !== '') {
@@ -768,8 +786,32 @@
         }
     });
 
+    // LISTENER FOR JUMP TO CARD INPUT
+    cardJumperEl.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent page reload or other behaviors
+            let jumpTo = parseInt(cardJumperEl.value, 10);
+            
+            // Check if it's a valid number within range
+            if (!isNaN(jumpTo) && jumpTo >= 1 && jumpTo <= termsList.length) {
+                currentIndex = jumpTo - 1; // arrays are 0-indexed
+                loadTerm();
+            } else {
+                // If invalid, revert to the current card's number
+                cardJumperEl.value = currentIndex + 1; 
+            }
+        }
+    });
+
+    // Revert the value if the user clicks out of the box without hitting enter
+    cardJumperEl.addEventListener('blur', function() {
+        cardJumperEl.value = currentIndex + 1;
+    });
+
+    // LISTENER FOR "ENTER" TO GO TO NEXT CARD 
     document.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' && inputEl.disabled) {
+        // Ensure we only go to next if input is disabled AND we aren't focused on the jumper
+        if (event.key === 'Enter' && inputEl.disabled && document.activeElement !== cardJumperEl) {
             goToNext();
         }
     });
