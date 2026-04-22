@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Term Memorizer</title>
     <style>
-        /* This section styles the page to look clean and modern */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: #f4f4f9;
+            padding: 2rem 0;
         }
         .container {
             background: white;
@@ -23,6 +23,16 @@
             max-width: 600px;
             width: 90%;
             text-align: center;
+            position: relative; /* For counter positioning */
+        }
+        /* Counter Styling */
+        #counter {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: bold;
         }
         h1 {
             font-size: 1.5rem;
@@ -57,12 +67,13 @@
         }
         #feedback {
             font-size: 1.1rem;
-            font-weight: bold;
             margin-bottom: 1rem;
-            min-height: 1.5em; /* Prevents the page from jumping when text appears */
+            min-height: 1.5em;
         }
-        .correct { color: #28a745; }
+        .correct { color: #28a745; font-weight: bold; }
         .incorrect { color: #dc3545; }
+        .correct-answer-text { font-weight: bold; color: #333; font-size: 1.2rem; display: block; margin-top: 0.5rem;}
+        
         button {
             padding: 0.8rem 1.5rem;
             font-size: 1rem;
@@ -73,25 +84,76 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        button:hover {
-            background-color: #0056b3;
+        button:hover { background-color: #0056b3; }
+
+        /* Review List Styling */
+        .list-container {
+            margin-top: 2rem;
+            display: none; /* Hidden until you get a word wrong */
         }
+        .list-container h2 {
+            font-size: 1.2rem;
+            color: #dc3545;
+            margin-top: 0;
+            border-bottom: 2px solid #fee2e2;
+            padding-bottom: 0.5rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            margin: 0;
+        }
+        li {
+            background: #fdfdfd;
+            margin: 0.5rem 0;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+        .delete-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0;
+            line-height: 1;
+        }
+        .delete-btn:hover { background: #cc0000; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <div id="counter"></div>
     <h1>Study Flashcards</h1>
     <p id="definition">Loading...</p>
     <p id="hint"></p>
     <input type="text" id="answer-input" placeholder="Type the term and press Enter..." autocomplete="off">
-    <p id="feedback"></p>
+    <div id="feedback"></div>
     <button id="next-btn" style="display: none;">Next Term</button>
+</div>
+
+<div class="container list-container" id="incorrect-container">
+    <h2>Words to Review</h2>
+    <ul id="incorrect-list"></ul>
 </div>
 
 <script>
     // 1. ADD YOUR TERMS HERE
-    // You can add as many as you want following this format.
+    // -> PASTE YOUR FULL 110 TERMS LIST HERE <-
     const termsList = [
     { term: "Second language (L2)", definition: "Any additional language acquisition beyond the first (L1), including both \"foreign\" language learning and also subsequent (third, fourth, etc.) languages. (Page 2)" },
     { term: "Second language acquisition (SLA)", definition: "A generic term referring to L2 acquisition in both natural and instructional settings, as well as to both \"foreign\" language learning and \"second\" language learning. (Page 2)" },
@@ -512,77 +574,147 @@
 ];
 
     let currentIndex = 0;
+    let incorrectTerms = []; // Array to track words you get wrong
 
     // Grab elements from the HTML
+    const counterEl = document.getElementById('counter');
     const definitionEl = document.getElementById('definition');
     const hintEl = document.getElementById('hint');
     const inputEl = document.getElementById('answer-input');
     const feedbackEl = document.getElementById('feedback');
     const nextBtn = document.getElementById('next-btn');
+    const incorrectContainer = document.getElementById('incorrect-container');
+    const incorrectListEl = document.getElementById('incorrect-list');
 
-    // 2. GENERATE THE HINT (e.g., "second language" -> "s_____ l______")
+    // GENERATE THE HINT (e.g., "second language" -> "s_____ l______")
     function generateHint(term) {
-        return term.split(' ').map(word => {
-            // Keep the first letter, replace the rest with underscores
-            if (word.length <= 1) return word;
-            return word[0] + '_'.repeat(word.length - 1);
+        // We remove text in parenthesis for the hint generation if you have things like "(L2)"
+        const cleanTerm = term.replace(/\s*\([^)]*\)/g, ''); 
+        return cleanTerm.split(' ').map(word => {
+            // Keep alphanumeric characters, replace others with underscores
+            let firstChar = word[0];
+            if (!firstChar.match(/[a-zA-Z0-9]/)) return word; // Skip punctuation only words
+            return firstChar + '_'.repeat(word.length - 1);
         }).join(' ');
     }
 
-    // 3. LOAD THE CURRENT TERM
+    // LOAD THE CURRENT TERM
     function loadTerm() {
         const currentItem = termsList[currentIndex];
+        
+        // Update Counter
+        counterEl.textContent = `Card ${currentIndex + 1} of ${termsList.length}`;
+
         definitionEl.textContent = currentItem.definition;
         hintEl.textContent = generateHint(currentItem.term);
         
-        // Reset the input and feedback for the new term
+        // Reset the input and feedback
         inputEl.value = '';
         inputEl.disabled = false;
         inputEl.focus();
-        feedbackEl.textContent = '';
-        feedbackEl.className = '';
+        feedbackEl.innerHTML = '';
         nextBtn.style.display = 'none';
     }
 
-    // 4. CHECK THE ANSWER
+    // CHECK THE ANSWER
     function checkAnswer() {
-        // Convert both to lowercase and remove extra spaces to make grading forgiving
+        // Clean both answers for a forgiving comparison (lowercase, remove extra spaces)
         const userAnswer = inputEl.value.trim().toLowerCase();
-        const correctAnswer = termsList[currentIndex].term.toLowerCase();
+        // Remove text in parentheses from the correct answer to make grading easier
+        const correctAnswerString = termsList[currentIndex].term;
+        const correctAnswerClean = correctAnswerString.replace(/\s*\([^)]*\)/g, '').trim().toLowerCase();
 
-        if (userAnswer === correctAnswer) {
-            feedbackEl.textContent = "Correct!";
-            feedbackEl.className = "correct";
+        if (userAnswer === correctAnswerClean || userAnswer === correctAnswerString.toLowerCase()) {
+            feedbackEl.innerHTML = `<span class="correct">Correct!</span>`;
         } else {
-            feedbackEl.textContent = `Incorrect! The correct answer was: ${termsList[currentIndex].term}`;
-            feedbackEl.className = "incorrect";
+            feedbackEl.innerHTML = `
+                <span class="incorrect">Incorrect. The correct answer is:</span>
+                <span class="correct-answer-text">${correctAnswerString}</span>
+            `;
+            // Add to the review list
+            addIncorrectTerm(correctAnswerString);
         }
 
         // Lock the text box and show the "Next" button
         inputEl.disabled = true; 
         nextBtn.style.display = 'inline-block';
-        nextBtn.focus();
+        nextBtn.textContent = "Next Term (Press Enter)";
     }
 
-    // Listen for the "Enter" key being pressed in the text box
-    inputEl.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' && inputEl.value.trim() !== '') {
-            checkAnswer();
-        }
-    });
-
-    // Listen for a click on the "Next" button
-    nextBtn.addEventListener('click', function() {
+    // GO TO NEXT TERM
+    function goToNext() {
         currentIndex++;
-        
-        // Loop back to the first term if we reach the end of the list
         if (currentIndex >= termsList.length) {
-            currentIndex = 0; 
+            currentIndex = 0; // Loop back to the start
         }
         loadTerm();
+    }
+
+    // ADD A TERM TO THE REVIEW LIST
+    function addIncorrectTerm(termString) {
+        // Only add it if it's not already on the list
+        if (!incorrectTerms.includes(termString)) {
+            incorrectTerms.push(termString);
+            renderIncorrectList();
+        }
+    }
+
+    // DRAW THE REVIEW LIST ON THE SCREEN
+    function renderIncorrectList() {
+        // Hide container if list is empty
+        if (incorrectTerms.length === 0) {
+            incorrectContainer.style.display = 'none';
+            return;
+        }
+        
+        incorrectContainer.style.display = 'block';
+        incorrectListEl.innerHTML = ''; // Clear current list
+        
+        // Create an entry for each missed word
+        incorrectTerms.forEach((term, index) => {
+            const li = document.createElement('li');
+            
+            const textSpan = document.createElement('span');
+            textSpan.textContent = term;
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '&times;'; // HTML entity for 'x'
+            deleteBtn.title = "Remove from review list";
+            
+            // When 'x' is clicked, remove the item and re-draw the list
+            deleteBtn.onclick = function() {
+                incorrectTerms.splice(index, 1);
+                renderIncorrectList();
+            };
+            
+            li.appendChild(textSpan);
+            li.appendChild(deleteBtn);
+            incorrectListEl.appendChild(li);
+        });
+    }
+
+    // LISTEN FOR 'ENTER' KEY
+    inputEl.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            // If the input is active, check the answer
+            if (!inputEl.disabled && inputEl.value.trim() !== '') {
+                checkAnswer();
+            } 
+        }
     });
 
-    // Start the app when the page loads
+    // LISTEN FOR ANY KEYPRESS WHEN INPUT IS DISABLED (To quickly move to next card)
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && inputEl.disabled) {
+            goToNext();
+        }
+    });
+
+    // LISTEN FOR "NEXT" BUTTON CLICK
+    nextBtn.addEventListener('click', goToNext);
+
+    // Start the app
     loadTerm();
 </script>
 
